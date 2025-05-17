@@ -3,10 +3,10 @@ pipeline {
 
     environment {
         DOCKER_CREDENTIALS_ID = 'roseaw-dockerhub'  
-        DOCKER_IMAGE = 'cithit/roseaw'                                   //<-----change this to your MiamiID!
+        DOCKER_IMAGE = 'cithit/woodwaj4'                                   //<-----change this to your MiamiID!
         IMAGE_TAG = "build-${BUILD_NUMBER}"
-        GITHUB_URL = 'https://github.com/miamioh-roseaw/225-lab5-1.git'     //<-----change this to match this new repository!
-        KUBECONFIG = credentials('roseaw-225')                           //<-----change this to match your kubernetes credentials (MiamiID-225)! 
+        GITHUB_URL = 'https://github.com/woodwaj4/225-lab5-1.git'     //<-----change this to match this new repository!
+        KUBECONFIG = credentials('woodwaj4-225')                           //<-----change this to match your kubernetes credentials (MiamiID-225)! 
     }
 
     stages {
@@ -62,7 +62,7 @@ pipeline {
                 sh 'docker pull public.ecr.aws/portswigger/dastardly:latest'
                 sh '''
                     docker run --user $(id -u) -v ${WORKSPACE}:${WORKSPACE}:rw \
-                    -e BURP_START_URL=http://10.48.10.170 \
+                    -e BURP_START_URL=http://10.48.10.105 \
                     -e BURP_REPORT_FILE_PATH=${WORKSPACE}/dastardly-report.xml \
                     public.ecr.aws/portswigger/dastardly:latest
                 '''
