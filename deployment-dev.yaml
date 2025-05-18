@@ -11,7 +11,7 @@ spec:
     - ReadWriteMany
   nfs:
     path:  /srv/nfs/woodwaj4         #your MiamiID
-    server: 10.48.10.177
+    server: 10.48.10.140
   persistentVolumeReclaimPolicy: Retain
 
   
