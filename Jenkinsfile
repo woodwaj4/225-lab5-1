@@ -8,6 +8,8 @@ pipeline {
         IMAGE_TAG = "build-${BUILD_NUMBER}"
         GITHUB_URL = 'https://github.com/woodwaj4/225-lab5-1.git'     //<-----change this to match this new repository!
         KUBECONFIG = credentials('woodwaj4-225')                           //<-----change this to match your kubernetes credentials (MiamiID-225)! 
+
+        
     }
 
     stages {
