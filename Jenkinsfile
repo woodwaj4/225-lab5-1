@@ -1,4 +1,3 @@
-aw
 pipeline {
     agent any 
 
