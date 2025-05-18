@@ -13,6 +13,8 @@ spec:
     path:  /srv/nfs/woodwaj4         #your MiamiID
     server: 10.48.10.177
   persistentVolumeReclaimPolicy: Retain
+
+  
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
