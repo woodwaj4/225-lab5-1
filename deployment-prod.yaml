@@ -10,7 +10,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    path:  /srv/nfs/woodwaj4         #local reference
+    path:  /srv/nfs/roseaw         #local reference
     server: 10.48.10.140 
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -46,7 +46,7 @@ spec:
     spec:
       containers:
         - name: flask
-          image: cithit/woodwaj4
+          image: cithit/roseaw
           ports:
             - containerPort: 5000
           volumeMounts:
