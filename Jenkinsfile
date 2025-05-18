@@ -72,15 +72,17 @@ pipeline {
         stage('Generate Test Data') {
             steps {
                 script {
-                // Ensure the label accurately targets the correct pods.
-                def appPod = sh(script: "kubectl get pods -l app=flask -o jsonpath='{.items[0].metadata.name}'", returnStdout: true).trim()
-                // Execute command within the pod. 
-                sh "kubectl get pods"
-                sh "sleep 15"
-                sh "kubectl exec -c flask ${appPod} -- python3 data-gen.py"
+                    // Ensure the pod is in running state
+                    def appPod = sh(script: "kubectl get pods -l app=flask -o jsonpath='{.items[0].metadata.name}'", returnStdout: true).trim()
+                    
+                    // Wait for the pod to be in the 'Running' state
+                    sh "kubectl wait --for=condition=ready pod/${appPod} --timeout=300s"
+                    
+                    // Execute command within the pod
+                    sh "kubectl exec -c flask ${appPod} -- python3 data-gen.py"
                 }
             }
-    }
+        }
 
         stage("Run Acceptance Tests") {
             steps {
