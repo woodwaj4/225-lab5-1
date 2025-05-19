@@ -48,7 +48,6 @@ pipeline {
                 script {
                     // This sets up the Kubernetes configuration using the specified KUBECONFIG
                     def kubeConfig = readFile(KUBECONFIG)
-                    sh "kubectl delete -pv flask-pv"
                     sh "kubectl delete --all deployments --namespace=default"
                     // This updates the deployment-dev.yaml to use the new image tag
                     sh "sed -i 's|${DOCKER_IMAGE}:latest|${DOCKER_IMAGE}:${IMAGE_TAG}|' deployment-dev.yaml"
