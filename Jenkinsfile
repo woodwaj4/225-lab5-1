@@ -10,13 +10,7 @@ pipeline {
     }
 
     stages {
-       stage('Run Bash Command') {
-            steps {
-                sh 'echo "Hello from Bash in Jenkins!"'
-                sh "kubectl delete pv flask-pv || true"
-            }
-        }
-        
+       
         stage('Code Checkout') {
             steps {
                 cleanWs()
