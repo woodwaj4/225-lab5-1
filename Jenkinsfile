@@ -10,6 +10,14 @@ pipeline {
     }
 
     stages {
+       stage('Run Bash Command') {
+            steps {
+                sh 'echo "Hello from Bash in Jenkins!"'
+                sh "kubectl apply -f deployment-dev.yaml"
+
+            }
+        }
+        
         stage('Code Checkout') {
             steps {
                 cleanWs()
